@@ -14,7 +14,7 @@ import api from "../../docs/api.md?raw";
 const theme = useTheme();
 const toggleTheme = () => { theme.global.name.value = theme.global.current.value.dark ? "light" : "dark"; };
 const logo = import.meta.env.BASE_URL + "gad.svg";
-const tab = ref("example");
+const tab = ref("overview");
 const readmeHtml = marked.parse(readme) as string;
 const apiHtml = marked.parse(api) as string;
 
@@ -23,7 +23,7 @@ const SAMPLES: Record<GadSourceType, string> = {
   template: `{% for u in users %}\n  <li>{%= u.name %}</li>\n{% end %}\n`,
   gadx: `@param (; title = "Gadx")\n@main\n    h1.title {= title }\n    ul\n        @for i in [1, 2, 3]\n            li item {= i }\n`,
 };
-const dialect = ref<GadSourceType>("gadx");
+const dialect = ref<GadSourceType>("gad");
 const host = ref<HTMLDivElement>();
 let view: EditorView | undefined;
 
@@ -59,8 +59,8 @@ watch([dialect, tab, () => theme.global.current.value.dark], () => { if (tab.val
     </v-app-bar>
     <v-main>
       <v-tabs v-model="tab" bg-color="surface">
-        <v-tab value="example">Example</v-tab>
         <v-tab value="overview">Overview</v-tab>
+        <v-tab value="example">Example</v-tab>
         <v-tab value="api">API</v-tab>
       </v-tabs>
       <v-container>
