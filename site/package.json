@@ -18,7 +18,8 @@
     "@mdi/font": "^7.4.47",
     "marked": "^14.1.0",
     "vue": "^3.5.0",
-    "vuetify": "^3.7.0"
+    "vuetify": "^3.7.0",
+    "@codemirror/theme-one-dark": "^6.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.0",

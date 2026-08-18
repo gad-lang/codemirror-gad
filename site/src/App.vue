@@ -5,6 +5,7 @@ import { marked } from "marked";
 import { EditorView, lineNumbers, highlightActiveLine } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
 import { syntaxHighlighting, defaultHighlightStyle, bracketMatching } from "@codemirror/language";
+import { oneDark } from "@codemirror/theme-one-dark";
 import { gad, type GadSourceType } from "../../src/index";
 // Docs sources bundled at build time.
 import readme from "../../README.md?raw";
@@ -34,7 +35,7 @@ function mount() {
       doc: SAMPLES[dialect.value],
       extensions: [
         lineNumbers(), highlightActiveLine(), bracketMatching(),
-        syntaxHighlighting(defaultHighlightStyle),
+        ...(theme.global.current.value.dark ? [oneDark] : [syntaxHighlighting(defaultHighlightStyle)]),
         gad({ sourceType: dialect.value }),
       ],
     }),
@@ -42,7 +43,7 @@ function mount() {
   });
 }
 onMounted(mount);
-watch([dialect, tab], () => { if (tab.value === "example") setTimeout(mount, 0); });
+watch([dialect, tab, () => theme.global.current.value.dark], () => { if (tab.value === "example") setTimeout(mount, 0); });
 </script>
 
 <template>
