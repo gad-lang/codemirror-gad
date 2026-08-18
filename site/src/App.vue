@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useTheme } from "vuetify";
 import { onMounted, ref, watch } from "vue";
 import { marked } from "marked";
 import { EditorView, lineNumbers, highlightActiveLine } from "@codemirror/view";
@@ -9,6 +10,8 @@ import { gad, type GadSourceType } from "../../src/index";
 import readme from "../../README.md?raw";
 import api from "../../docs/api.md?raw";
 
+const theme = useTheme();
+const toggleTheme = () => { theme.global.name.value = theme.global.current.value.dark ? "light" : "dark"; };
 const logo = import.meta.env.BASE_URL + "gad.svg";
 const tab = ref("example");
 const readmeHtml = marked.parse(readme) as string;
@@ -50,6 +53,7 @@ watch([dialect, tab], () => { if (tab.value === "example") setTimeout(mount, 0);
         codemirror-gad
       </v-app-bar-title>
       <v-spacer />
+      <v-btn :icon="theme.global.current.value.dark ? 'mdi-weather-sunny' : 'mdi-weather-night'" @click="toggleTheme" variant="text" title="Toggle theme" />
       <v-btn href="https://github.com/gad-lang/codemirror-gad" icon="mdi-github" variant="text" />
     </v-app-bar>
     <v-main>
