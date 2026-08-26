@@ -38,8 +38,14 @@ jobs:
       - name: Install and build
         run: bun install --frozen-lockfile && bun run build
       # Build ran above; skip lifecycle scripts so `prepublishOnly` (a bun build)
-      # does not re-run under npm.
+      # does not re-run under npm. A pre-release version (one with a `-rc`/`-beta`
+      # suffix) publishes under the `next` dist-tag so it never moves `latest`.
       - name: Publish to npm
-        run: npm publish --access public --provenance --ignore-scripts
+        run: |
+          ver="$(node -p "require('./package.json').version")"
+          tag=latest
+          case "$ver" in *-*) tag=next ;; esac
+          echo "publishing $ver under dist-tag $tag"
+          npm publish --access public --provenance --ignore-scripts --tag "$tag"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
