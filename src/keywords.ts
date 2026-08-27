@@ -16,6 +16,8 @@ export const keywords: string[] = [
   "class", "enum", "interface",
   // `env` is the environment-table keyword; `delete` is the delete statement.
   "delete", "env",
+  // added by update plugin
+  "mixin",
 ];
 
 export const atoms: string[] = ["true", "false", "yes", "no", "nil"];
