@@ -1,6 +1,6 @@
 {
   "name": "@gad-lang/codemirror-gad",
-  "version": "0.1.0-rc.1",
+  "version": "0.1.0-rc.2",
   "description": "CodeMirror 6 language support for the Gad scripting language: highlighting, autocompletion and async diagnostics.",
   "type": "module",
   "main": "dist/index.js",
