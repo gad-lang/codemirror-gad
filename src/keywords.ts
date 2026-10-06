@@ -30,7 +30,7 @@ export const constants: string[] = [
 export const builtins: string[] = [
   // type constructors / conversions
   "int", "uint", "float", "decimal", "bool", "flag", "char", "string", "str",
-  "bytes", "array", "chars", "error", "keyValue", "keyValueArray",
+  "bytes", "array", "chars", "error", "keyValue", "keyValueArray", "uuid",
   // type inspection
   "typeName", "typeof", "is", "isArray", "isBool", "isBytes", "isCallable",
   "isChar", "isDict", "isError", "isFloat", "isFunction", "isInt", "isIterable",
