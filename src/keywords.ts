@@ -34,15 +34,15 @@ export const builtins: string[] = [
   // type inspection
   "typeName", "typeof", "is", "isArray", "isBool", "isBytes", "isCallable",
   "isChar", "isDict", "isError", "isFloat", "isFunction", "isInt", "isIterable",
-  "isIterator", "isNil", "isRawStr", "isStr", "isUint", "isSyncDict",
+  "isIterator", "isNil", "isRawStr", "isStr", "isUint", "isSyncDict", "implements",
   // sequences / collections (append/delete are now operators/statements, not builtins)
-  "len", "copy", "dcopy", "repeat", "contains", "sort",
+  "len", "cap", "copy", "dcopy", "repeat", "contains", "sort",
   "sortReverse", "keys", "values", "items", "zip", "enumerate",
   // iteration
   "map", "filter", "reduce", "each", "iterate", "iterator", "collect", "toArray",
   // io / formatting
   "print", "println", "printf", "sprintf", "repr", "read", "write", "flush",
-  "stdio",
+  "stdio", "close",
   // misc
-  "globals", "cast", "wrap", "addMethod", "Class", "userData",
+  "globals", "cast", "wrap", "addMethod", "Class", "Mixin", "userData",
 ];
